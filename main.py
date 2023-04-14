@@ -9,6 +9,7 @@ import win32clipboard
 
 # 要插入的Markdown文本
 markdown_text = '''
+   
 | Header 1 | Header 2 | Header 3 |
 | -------- | -------- | -------- |
 | Cell 1   | Cell 2   | Cell 3   |
@@ -17,6 +18,7 @@ markdown_text = '''
 win32clipboard.OpenClipboard()
 markdown_text = win32clipboard.GetClipboardData(win32clipboard.CF_TEXT).decode('gbk')
 win32clipboard.CloseClipboard()
+markdown_text=markdown_text.strip()
 # 使用markdown库将Markdown文本转换为HTML
 html = markdown.markdown(markdown_text, extensions=['tables'])
 
